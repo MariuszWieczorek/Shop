@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NLog.Extensions.Logging;
 using Shop.Application;
 using Shop.Application.Common.Interfaces;
 using Shop.Infrastructure;
@@ -13,6 +15,9 @@ namespace Shop.WebApi
 {
     public class Startup
     {
+
+        public static readonly ILoggerFactory _loggerFactory
+            = new NLogLoggerFactory();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,7 +28,7 @@ namespace Shop.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplication();
-            services.AddInfrastructure(Configuration);
+            services.AddInfrastructure(Configuration,_loggerFactory);
 
             services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
