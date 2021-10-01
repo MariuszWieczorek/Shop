@@ -30,7 +30,6 @@ namespace Shop.Application.Orders.Queries
             {
                 throw new NotFoundException(nameof(Order),request.Id);
             }
-
             return order.ToDto();
         }
     }
