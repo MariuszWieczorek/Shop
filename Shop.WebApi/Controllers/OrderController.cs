@@ -24,6 +24,7 @@ namespace Shop.WebApi.Controllers
         public async Task<ActionResult<OrderDto>> GetOrderById
             ([FromQuery] GetOrderByIdQuery query)
         {
+            _ = Task.Delay(1000);
             return await Mediator.Send(query);
         }
 

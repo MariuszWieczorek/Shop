@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Shop.Application.Behaviors
+namespace Shop.Application.Common.Behaviors
 {
     public class PerformanceBehavior<TRequest, TResponce> : IPipelineBehavior<TRequest, TResponce>
     {
@@ -42,7 +42,7 @@ namespace Shop.Application.Behaviors
             {
                 var requestName = typeof(TRequest).Name;
                 var userId = _currentUserService.UserId ?? string.Empty;
-                _logger.LogWarning($"Long Request {requestName} {elapsedMiliseconds} ms {userId} {request} ");
+                _logger.LogWarning($"Long Request {requestName} {elapsedMiliseconds} ms ");
             }
 
             return responce;

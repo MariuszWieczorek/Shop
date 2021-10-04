@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Shop.Application.Behaviors;
+using Shop.Application.Common.Behaviors;
 using System.Reflection;
 
 namespace Shop.Application

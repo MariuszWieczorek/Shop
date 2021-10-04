@@ -19,7 +19,7 @@ namespace Shop.Infrastructure
             services.AddTransient<IDateTime, DateTimeService>();
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             services.AddDbContext<ApplicationDbContext>(options => options
-            .UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+            .UseSqlServer(configuration.GetConnectionString("LocalConnection"))
             .LogTo(Console.WriteLine,new[] {DbLoggerCategory.Database.Command.Name},LogLevel.Information)
             .UseLoggerFactory(loggerFactory)
             .EnableSensitiveDataLogging());
